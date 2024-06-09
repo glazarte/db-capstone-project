@@ -101,23 +101,10 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`menuitems`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`menuitems` (
-  `menuitems_id` INT NOT NULL,
-  `coursename` VARCHAR(45) NULL,
-  `startername` VARCHAR(45) NULL,
-  `desertname` VARCHAR(45) NULL,
-  PRIMARY KEY (`menuitems_id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `mydb`.`menu`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`menu` (
   `menu_id` INT NOT NULL,
-  `menuname` VARCHAR(45) NULL,
   `cuisine` VARCHAR(45) NULL,
   `starter` VARCHAR(45) NULL,
   `course` VARCHAR(45) NULL,
@@ -127,19 +114,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`menu` (
   `orders_orders_id` INT NOT NULL,
   `orders_booking_id` INT NOT NULL,
   `orders_staffinformation_id` INT NOT NULL,
-  `menuitems_id` INT NULL,
-  `menuitems_menuitems_id` INT NOT NULL,
-  PRIMARY KEY (`menu_id`, `menuitems_menuitems_id`),
+  PRIMARY KEY (`menu_id`),
   INDEX `fk_menu_orders1_idx` (`orders_orders_id` ASC, `orders_booking_id` ASC, `orders_staffinformation_id` ASC) VISIBLE,
-  INDEX `fk_menu_menuitems1_idx` (`menuitems_menuitems_id` ASC) VISIBLE,
   CONSTRAINT `fk_menu_orders1`
     FOREIGN KEY (`orders_orders_id`)
     REFERENCES `mydb`.`orders` (`orders_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_menu_menuitems1`
-    FOREIGN KEY (`menuitems_menuitems_id`)
-    REFERENCES `mydb`.`menuitems` (`menuitems_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
