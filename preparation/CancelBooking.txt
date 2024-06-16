@@ -1,0 +1,17 @@
+DELIMITER //
+
+CREATE PROCEDURE CancelBooking(
+    IN bookingID INT
+)
+BEGIN
+    -- Eliminar la reserva de la tabla bookings
+    DELETE FROM bookings
+    WHERE bookings_id = bookingID;
+
+    -- Mensaje de confirmación
+    SELECT 'Booking successfully cancelled' AS Message;
+END //
+
+DELIMITER ;
+
+Para ejecutar: CALL CancelBooking(23);

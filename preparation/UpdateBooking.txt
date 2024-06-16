@@ -1,0 +1,19 @@
+DELIMITER //
+
+CREATE PROCEDURE UpdateBooking(
+    IN bookingID INT,
+    IN bookingDate DATETIME
+)
+BEGIN
+    -- Actualizar la fecha de la reserva en la tabla bookings
+    UPDATE bookings
+    SET date = bookingDate
+    WHERE bookings_id = bookingID;
+
+    -- Mensaje de confirmación
+    SELECT 'Booking successfully updated' AS Message;
+END //
+
+DELIMITER ;
+
+Para ejecutar: CALL UpdateBooking(23, '2024-06-07 15:00:00');

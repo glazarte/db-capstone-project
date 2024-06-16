@@ -1,0 +1,22 @@
+-- Crear el procedimiento almacenado AddBooking
+DELIMITER //
+
+CREATE PROCEDURE AddBooking(
+    IN bookingID INT,
+    IN bookingDate DATETIME,
+    IN tableNumber INT,
+    IN staff INT,
+    IN customerID INT
+)
+BEGIN
+    -- Insertar un nuevo registro en la tabla Bookings
+    INSERT INTO bookings (bookings_id, date, table_number, staffinformation_staffinformation_id, customer_id)
+    VALUES (bookingID, bookingDate, tableNumber, staff, customerID);
+
+    -- Mensaje de confirmación
+    SELECT 'Booking successfully added' AS Message;
+END //
+
+DELIMITER ;
+
+Para ejecutar: CALL AddBooking(23, '2024-06-06 15:00:00', 5, 2, 1);
