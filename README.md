@@ -111,4 +111,5 @@ CALL CancelBooking(5);
 A Tableau workbook has been created, containing various charts and dashboards to facilitate data analysis. The workbook is: 
 LittleLemonTableau.twb
 
-
+## Client with Jupyter Notebook
+The client is: LittleLemonClient.ipynb
